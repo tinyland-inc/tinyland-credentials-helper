@@ -1,0 +1,43 @@
+{
+  "name": "@tinyland-inc/tinyland-credentials-helper",
+  "version": "0.1.0",
+  "description": "Credentials helper utilities for user onboarding, download responses, email templates, and secure share links",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run build",
+    "test": "vitest",
+    "test:coverage": "vitest --coverage",
+    "typecheck": "tsc --noEmit"
+  },
+  "author": "Tinyland.dev",
+  "license": "Zlib AND LicenseRef-Tinyland-Proprietary",
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/tinyland/tinyland.dev",
+    "directory": "packages/tinyland-credentials-helper"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "vitest": "^4.0.0"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}
