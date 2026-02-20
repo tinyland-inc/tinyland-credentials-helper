@@ -1,5 +1,5 @@
 {
-  "name": "@tinyland-inc/tinyland-credentials-helper",
+  "name": "@tummycrypt/tinyland-credentials-helper",
   "version": "0.1.0",
   "description": "Credentials helper utilities for user onboarding, download responses, email templates, and secure share links",
   "type": "module",
@@ -39,5 +39,9 @@
   },
   "engines": {
     "node": ">=22.0.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
   }
 }
