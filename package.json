@@ -1,6 +1,6 @@
 {
   "name": "@tummycrypt/tinyland-credentials-helper",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Credentials helper utilities for user onboarding, download responses, email templates, and secure share links",
   "type": "module",
   "main": "./dist/index.js",
