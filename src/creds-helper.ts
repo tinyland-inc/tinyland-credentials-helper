@@ -2,11 +2,11 @@ import { getConfig } from './config.js';
 import { escapeHtml, maskPassword } from './helpers.js';
 import type { UserCredentials } from './types.js';
 
-/**
- * Generate complete user credentials with TOTP setup.
- *
- * Requires `configure()` to have been called first with all DI functions.
- */
+
+
+
+
+
 export async function generateUserCredentials(
   username: string,
   displayName: string,
@@ -42,9 +42,9 @@ export async function generateUserCredentials(
   };
 }
 
-/**
- * Create a downloadable credentials card response (Web `Response` object).
- */
+
+
+
 export function createCredentialsDownloadResponse(
   credentialsCard: Buffer,
   username: string,
@@ -65,9 +65,9 @@ export function createCredentialsDownloadResponse(
   });
 }
 
-/**
- * Generate an email-friendly HTML template for credentials.
- */
+
+
+
 export function generateCredentialsEmailHtml(
   credentials: UserCredentials,
   includeCard: boolean = false
@@ -217,12 +217,12 @@ export function generateCredentialsEmailHtml(
 </html>`;
 }
 
-/**
- * Generate a secure, time-limited share link for credentials download.
- *
- * Returns a base64url-encoded JSON token containing the credentials ID
- * and expiration timestamp.
- */
+
+
+
+
+
+
 export function generateSecureCredentialsLink(
   credentialsId: string,
   expiresInMinutes: number = 60

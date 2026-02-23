@@ -1,4 +1,4 @@
-// Public API
+
 export type { UserCredentials, CredentialsPackage, CredentialsHelperConfig } from './types.js';
 export { configure, getConfig, resetConfig } from './config.js';
 export { maskPassword, escapeHtml } from './helpers.js';
