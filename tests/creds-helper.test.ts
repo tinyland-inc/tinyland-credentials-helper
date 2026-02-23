@@ -12,9 +12,9 @@ import {
 } from '../src/index.js';
 import type { CredentialsHelperConfig, UserCredentials } from '../src/index.js';
 
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
+
+
+
 
 function createMockConfig(overrides?: Partial<CredentialsHelperConfig>): CredentialsHelperConfig {
   return {
@@ -29,9 +29,9 @@ function createMockConfig(overrides?: Partial<CredentialsHelperConfig>): Credent
   };
 }
 
-// ---------------------------------------------------------------------------
-// 1. configure / getConfig / resetConfig
-// ---------------------------------------------------------------------------
+
+
+
 
 describe('configure / getConfig / resetConfig', () => {
   beforeEach(() => resetConfig());
@@ -72,9 +72,9 @@ describe('configure / getConfig / resetConfig', () => {
   });
 });
 
-// ---------------------------------------------------------------------------
-// 2. generateUserCredentials
-// ---------------------------------------------------------------------------
+
+
+
 
 describe('generateUserCredentials', () => {
   beforeEach(() => resetConfig());
@@ -204,9 +204,9 @@ describe('generateUserCredentials', () => {
   });
 });
 
-// ---------------------------------------------------------------------------
-// 3. createCredentialsDownloadResponse
-// ---------------------------------------------------------------------------
+
+
+
 
 describe('createCredentialsDownloadResponse', () => {
   const card = Buffer.from('test-image-data');
@@ -276,11 +276,11 @@ describe('createCredentialsDownloadResponse', () => {
   it('filename includes a timestamp-like numeric portion', () => {
     const res = createCredentialsDownloadResponse(card, 'u');
     const cd = res.headers.get('Content-Disposition')!;
-    // The filename is credentials-u-<timestamp>.png
+    
     const match = cd.match(/credentials-u-(\d+)\.png/);
     expect(match).not.toBeNull();
     const ts = parseInt(match![1], 10);
-    // Timestamp should be roughly now (within 5 seconds)
+    
     expect(Math.abs(ts - Date.now())).toBeLessThan(5000);
   });
 
@@ -301,9 +301,9 @@ describe('createCredentialsDownloadResponse', () => {
   });
 });
 
-// ---------------------------------------------------------------------------
-// 4. generateCredentialsEmailHtml
-// ---------------------------------------------------------------------------
+
+
+
 
 describe('generateCredentialsEmailHtml', () => {
   const baseCreds: UserCredentials = {
@@ -331,7 +331,7 @@ describe('generateCredentialsEmailHtml', () => {
 
   it('masks password showing first 2 and last 2 chars', () => {
     const html = generateCredentialsEmailHtml(baseCreds);
-    // Abcdef1234 -> Ab......34 (with bullet chars)
+    
     expect(html).toContain('Ab');
     expect(html).toContain('34');
     expect(html).not.toContain('Abcdef1234');
@@ -422,9 +422,9 @@ describe('generateCredentialsEmailHtml', () => {
   });
 });
 
-// ---------------------------------------------------------------------------
-// 5. generateSecureCredentialsLink
-// ---------------------------------------------------------------------------
+
+
+
 
 describe('generateSecureCredentialsLink', () => {
   it('returns a url starting with /admin/credentials/download/', () => {
@@ -491,7 +491,7 @@ describe('generateSecureCredentialsLink', () => {
   it('url contains only url-safe characters in token', () => {
     const { url } = generateSecureCredentialsLink('test-id-with-dashes');
     const token = url.split('/admin/credentials/download/')[1];
-    // base64url uses A-Z a-z 0-9 - _
+    
     expect(token).toMatch(/^[A-Za-z0-9_-]+$/);
   });
 
@@ -528,9 +528,9 @@ describe('generateSecureCredentialsLink', () => {
   });
 });
 
-// ---------------------------------------------------------------------------
-// 6. Password masking edge cases
-// ---------------------------------------------------------------------------
+
+
+
 
 describe('maskPassword edge cases', () => {
   it('empty string returns full mask', () => {
@@ -584,9 +584,9 @@ describe('maskPassword edge cases', () => {
   });
 });
 
-// ---------------------------------------------------------------------------
-// 7. HTML structure
-// ---------------------------------------------------------------------------
+
+
+
 
 describe('HTML structure', () => {
   const creds: UserCredentials = {
@@ -682,9 +682,9 @@ describe('HTML structure', () => {
   });
 });
 
-// ---------------------------------------------------------------------------
-// 8. Error handling
-// ---------------------------------------------------------------------------
+
+
+
 
 describe('error handling', () => {
   beforeEach(() => resetConfig());
@@ -741,9 +741,9 @@ describe('error handling', () => {
   });
 });
 
-// ---------------------------------------------------------------------------
-// 9. Edge cases
-// ---------------------------------------------------------------------------
+
+
+
 
 describe('edge cases', () => {
   beforeEach(() => resetConfig());
@@ -793,9 +793,9 @@ describe('edge cases', () => {
   });
 });
 
-// ---------------------------------------------------------------------------
-// 10. escapeHtml helper
-// ---------------------------------------------------------------------------
+
+
+
 
 describe('escapeHtml', () => {
   it('escapes ampersands', () => {
